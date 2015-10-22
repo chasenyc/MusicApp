@@ -1,5 +1,9 @@
 <h1>Album Page</h1>
 
 <p>Album name: <%= @album.title %></p>
-<p>By: <%= @album.band.name %></p>
+<p>By: <a href="<%= band_url(@album.band.id) %>"><%= @album.band.name %></a></p>
 <p>Live or Studio: <%= @album.live_or_studio %></p>
+<p>Tracks:</p>
+<% @album.tracks.each do |track| %>
+  <p><a href="<%= track_url(track.id) %>"><%= track.name %></p>
+<% end %>
