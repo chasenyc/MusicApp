@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true
 
-  after_initialize :ensure_session_token #??
+  after_initialize :ensure_session_token
 
   attr_reader :password #remember this being here but don't remember why.
 

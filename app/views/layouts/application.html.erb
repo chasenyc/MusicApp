@@ -5,9 +5,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= flash.now[:errors] %>
 <% if current_user.nil? %>
-  <a href="<% new_session_url %>">log in</a>
+  <a href="<%= new_session_url %>">log in</a>
 <% else %>
   <%= current_user.email %>
   <form method="POST" action="<%= session_url %>">
