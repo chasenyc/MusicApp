@@ -14,17 +14,17 @@ class User < ActiveRecord::Base
     user = User.find_by_email(email)
     return nil if user.nil?
     return user if user.is_password?(password)
-    
+
     nil
   end
 
   def password=(password)
     @password = password #remember this being here but don't remember why.
-    self.password_digest = BCrypt::Password.new(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
-    BCrypt::Password.create(self.password_digest).is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
   def reset_session_token!
