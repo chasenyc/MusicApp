@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :notes,
+    dependent: :destroy,
+    class_name: 'Note',
+    foreign_key: :user_id,
+    primary_key: :id
+
   attr_reader :password #remember this being here but don't remember why.
 
   def self.generate_session_token

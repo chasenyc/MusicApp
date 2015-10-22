@@ -7,6 +7,14 @@
 <p>Lyrics: <%= @track.lyrics %></p>
 
 <p>
+  <%= render partial: "notes/form", locals: { track: @track } %>
+</p>
+<p>
+  <% @track.notes.each do |note| %>
+  <li><%= note.note %> - <%= note.user.email %></li>
+  <% end %>
+</p>
+<p>
   <a href="<%= edit_track_url(@track.id) %>">Edit Track</a>
 </p>
 <form method="POST" action="<%= track_url(@track.id) %>">

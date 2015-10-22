@@ -6,10 +6,17 @@ Rails.application.routes.draw do
   resources :bands do
     get 'albums/new'
   end
+
   resources :albums, only: [:edit, :show, :update, :destroy, :create] do
     get 'tracks/new'
   end
-  resources :tracks, only: [:edit, :show, :update, :destroy, :create]
+
+  resources :tracks, only: [:edit, :show, :update, :destroy, :create] do
+    get 'notes/new'
+  end
+  
+  resources :notes, only: [:edit, :show, :update, :destroy, :create]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
