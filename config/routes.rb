@@ -11,16 +11,6 @@ Rails.application.routes.draw do
   end
   resources :tracks, only: [:edit, :show, :update, :destroy, :create]
 
-
-# new_album_track GET    /albums/:album_id/tracks/new(.:format) tracks#new
-#          tracks POST   /tracks(.:format)                      tracks#create
-#      edit_track GET    /tracks/:id/edit(.:format)             tracks#edit
-#           track GET    /tracks/:id(.:format)                  tracks#show
-#                 PATCH  /tracks/:id(.:format)                  tracks#update
-#                 PUT    /tracks/:id(.:format)                  tracks#update
-#                 DELETE /tracks/:id(.:format)                  tracks#destroy
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
