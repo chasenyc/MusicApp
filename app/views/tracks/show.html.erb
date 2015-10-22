@@ -4,7 +4,7 @@
 <p>On Album: <a href="<%= album_url(@track.album.id) %>"><%= @track.album.title %></a></p>
 <p>By: <a href="<%= band_url(@track.band.id) %>"><%= @track.band.name %></a></p>
 <p>Regular or Bonus: <%= @track.bonus_or_regular %></p>
-<p>Lyrics: <%= @track.lyrics %></p>
+<p>Lyrics: <%= ugly_lyrics(@track.lyrics) %></p>
 
 <p>
   <%= render partial: "notes/form", locals: { track: @track } %>

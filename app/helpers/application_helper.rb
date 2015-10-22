@@ -8,5 +8,13 @@ module ApplicationHelper
     HTML
   end
 
-  
+  def ugly_lyrics(lyrics)
+    lyric_arr = lyrics.split("\n")
+    lyric_arr.map! do |line|
+      "♫#{h(line)}"
+    end
+    new_lyrics = lyric_arr.join("\n")
+  end
+
+
 end
