@@ -5,3 +5,12 @@
 <p>By: <a href="<%= band_url(@track.band.id) %>"><%= @track.band.name %></a></p>
 <p>Regular or Bonus: <%= @track.bonus_or_regular %></p>
 <p>Lyrics: <%= @track.lyrics %></p>
+
+<p>
+  <a href="<%= edit_track_url(@track.id) %>">Edit Track</a>
+</p>
+<form method="POST" action="<%= track_url(@track.id) %>">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <button value="submit">delete</button>
+</form>

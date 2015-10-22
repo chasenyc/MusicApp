@@ -1,28 +1,3 @@
-<h1>New album page</h1>
+<h1>New Album</h1>
 
-<form method="POST" action="<%= albums_url %>">
-  <%= auth_token %>
-  <p>
-    <label>Band who made the album:
-      <select name="album[band_id]">
-        <% @bands.each do |band| %>
-          <option value="<%= band.id %>"<%= @band_id == band.id ? "selected" : ""%>><%= band.name %></option>
-        <% end %>
-      </select>
-    </label>
-  </p>
-  <p>
-    <label> Album Name:
-      <input type="text" name="album[title]">
-    </label>
-  </p>
-  <p>
-    <label>Studio Album
-      <input type="radio" name="album[live_or_studio]" value="Studio" checked>
-    </label>
-    <label>Live Album
-      <input type="radio" name="album[live_or_studio]" value="Live">
-    </label>
-  </p>
-  <button type="submit">create album</button>
-</form>
+<%= render partial: "form", locals: { album: Album.new } %>

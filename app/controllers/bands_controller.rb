@@ -24,15 +24,29 @@ class BandsController < ApplicationController
   end
 
   def edit
-
+    @band = Band.find(params[:id])
+    render :edit
   end
 
   def update
-
+    @band = Band.find(params[:id])
+    @band.update(band_params)
+    if @band.save
+      render :show
+    else
+      flash.now[:errors] = @band.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
-
+    @band = Band.find(params[:id])
+    if @band.delete
+      render :index
+    else
+      flash.now[:errors] = @band.errors.full_messages
+      render :index
+    end
   end
 
   private

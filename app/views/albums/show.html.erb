@@ -5,5 +5,14 @@
 <p>Live or Studio: <%= @album.live_or_studio %></p>
 <p>Tracks:</p>
 <% @album.tracks.each do |track| %>
-  <p><a href="<%= track_url(track.id) %>"><%= track.name %></p>
+  <li><a href="<%= track_url(track.id) %>"><%= track.name %></li>
 <% end %>
+<p>
+  <a href="<%= edit_album_url(@album.id) %>">Edit Album</a> |
+  <a href="<%= album_tracks_new_url(@album.id) %>">New Track</a>
+</p>
+<form method="POST" action="<%= album_url(@album.id) %>">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <button value="submit">delete</button>
+</form>

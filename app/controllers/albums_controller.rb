@@ -22,15 +22,30 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-
+    @album = Album.find(params[:id])
+    @bands = Band.all
+    render :edit
   end
 
   def update
-
+    @album = Album.find(params[:id])
+    @album.update(album_params)
+    if @album.save
+      render :show
+    else
+      flash.now[:errors] = @album.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
-
+    @album = Album.find(params[:id])
+    if @album.delete
+      redirect_to bands_url
+    else
+      flash.now[:errors] = @album.errors.full_messages
+      render :edit
+    end
   end
 
   private
