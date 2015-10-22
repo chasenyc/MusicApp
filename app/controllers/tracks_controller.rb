@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @album_id = params[:album_id].to_i
     @albums = Album.all

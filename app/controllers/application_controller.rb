@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   def log_in_user!(user)
     session[:session_token] = user.reset_session_token!
   end
+
+  def authenticate_user!
+    redirect_to new_session_url unless logged_in?
+  end
+
+
 end

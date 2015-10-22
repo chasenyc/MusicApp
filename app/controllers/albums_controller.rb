@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @band_id = params[:band_id].to_i
     @bands = Band.all
